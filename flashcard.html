@@ -1,0 +1,62 @@
+
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>flashcard</title>
+    <link rel="stylesheet" href="flashcard.css">
+</head>
+
+<body>
+    <h1>Flash card</h1>
+    <div align="center" class="q1" onclick="show()">
+        <img id="qimage1" style="width:300px;height:400px;">
+    </div>
+
+    
+	
+	<script type="text/javascript">
+	
+		let state = 0;
+        function reponse() {
+            if (qimage1.src.match("Q01.png")) {
+                document.getElementById("qimage1").src = "R01.png"
+            } else if (qimage1.src.match("Q02.png")) {
+                document.getElementById("qimage1").src = "R02.png"
+            } else if (qimage1.src.match("Q03.png")) {
+                document.getElementById("qimage1").src = "R03.png"
+            } else if (qimage1.src.match("Q04.png")) {
+                document.getElementById("qimage1").src = "R04.png"
+            } else if (qimage1.src.match("Q05.png")) {
+                document.getElementById("qimage1").src = "R05.png"
+            } else if (qimage1.src.match("Q06.png")) {
+                document.getElementById("qimage1").src = "R06.png"
+            }
+			state = 1
+        }
+
+
+        var image = new Array("Q01.png", "Q02.png", "Q03.png", "Q04.png", "Q05.png", "Q06.png");
+
+        function question() {
+			state = 0
+            randomNum = Math.floor((Math.random() * image.length));
+            document.getElementById("qimage1").src = image[randomNum];
+
+        }
+		question()
+        function show() {
+			if(state == 0){
+				reponse()
+			} else {
+				question()
+			}
+        }
+    </script>
+</body>
+
+</html>
+
+
