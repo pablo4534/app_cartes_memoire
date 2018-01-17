@@ -1,26 +1,76 @@
+
+
+
 <html>
+
 <head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
-    <title>Home</title>
+    <meta charset="utf-8">
+    <title>flashcard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
       <meta name="format-detection" content="telephone=no" />
       <meta name="msapplication-tap-highlight" content="no" />
       <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
       <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 </head>
+
 <body>
+    <center><h1>Flashcards</h1></center>
 
-<h1>Flashcards</h1>
-<div class="nav">
+    <div class="progress">
+         <div class="indeterminate"></div>
+     </div>
+    <div align="center" class="q1" onclick="show()">
+        <img id="qimage1" style="width:300px;height:400px;">
+    </div>
 
 
-<ul>
- <li><a class="waves-effect waves-light btn" href="O:\GitHub\app_cartes_memoire\www\flashcard.html">Commencer Flashcards</a></li>
 
-</ul>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-       <script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript">
+
+		let state = 0;
+        function reponse() {
+            if (qimage1.src.match("Q01.png")) {
+                document.getElementById("qimage1").src = "R01.png"
+            } else if (qimage1.src.match("Q02.png")) {
+                document.getElementById("qimage1").src = "R02.png"
+            } else if (qimage1.src.match("Q03.png")) {
+                document.getElementById("qimage1").src = "R03.png"
+            } else if (qimage1.src.match("Q04.png")) {
+                document.getElementById("qimage1").src = "R04.png"
+            } else if (qimage1.src.match("Q05.png")) {
+                document.getElementById("qimage1").src = "R05.png"
+            } else if (qimage1.src.match("Q06.png")) {
+                document.getElementById("qimage1").src = "R06.png"
+            }
+			state = 1
+        }
+
+
+        var image = new Array("Q01.png", "Q02.png", "Q03.png", "Q04.png", "Q05.png", "Q06.png");
+
+        function question() {
+			state = 0
+            randomNum = Math.floor((Math.random() * image.length));
+            document.getElementById("qimage1").src = image[randomNum];
+
+        }
+		question()
+        function show() {
+			if(state == 0){
+				reponse()
+			} else {
+				question()
+			}
+        }
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+           <script type="text/javascript" src="cordova.js"></script>
+           <div class="progress">
+     <div class="indeterminate"></div>
+ </div>
 </body>
+
 </html>
